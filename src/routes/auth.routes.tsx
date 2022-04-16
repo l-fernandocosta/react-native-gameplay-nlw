@@ -13,7 +13,6 @@ export type RootStackParams ={
 const { Navigator, Screen } = createStackNavigator();
 export const AuthRoutes = () => {
   return (
-    //@ts-ignore
     <Navigator
       initialRouteName="SignIn"
       screenOptions={{

@@ -1,6 +1,7 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { Avatar } from "../Avatar";
+import { ButtonAdd } from "../ButtonAdd";
 import { styles } from "./styles";
 
 export function Profile() {
@@ -14,6 +15,7 @@ export function Profile() {
         </View>
         <Text style={styles.message}>Hoje é dia de vitória</Text>
       </View>
+    
     </View>
   );
 }
