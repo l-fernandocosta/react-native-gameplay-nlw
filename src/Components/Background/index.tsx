@@ -1,3 +1,4 @@
+import { DefaultTheme } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { ReactNode } from "react";
 import { ViewProps } from "react-native";
@@ -7,6 +8,15 @@ import { styles } from "./styles";
 type BackgroundProps = ViewProps & {
   children: ReactNode, 
 };
+
+export const MyTheme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    background: 'transparent'
+  },
+};
+
 
 export function Background( {children} : BackgroundProps) {
   const { secondary80, secondary100 } = theme.colors;

@@ -1,14 +1,17 @@
+import React from "react";
 import { useFonts } from "expo-font";
+import AppLoading from "expo-app-loading";
 import { Inter_400Regular, Inter_500Medium } from "@expo-google-fonts/inter";
 import {
   Rajdhani_700Bold,
   Rajdhani_500Medium,
 } from "@expo-google-fonts/rajdhani";
-import AppLoading from "expo-app-loading";
-import { SignIn } from "./src/Screens/SignIn";
-import { StatusBar, View } from "react-native";
-import React from "react";
-import { Background } from "./src/Components/Backgroud";
+import { Background, MyTheme } from "./src/Components/Background/index";
+
+import { StatusBar } from "react-native";
+
+import { NavigationContainer } from "@react-navigation/native";
+import { AuthRoutes } from "./src/routes/auth.routes";
 
 export default function App() {
   const [isLoaded] = useFonts({
@@ -17,17 +20,19 @@ export default function App() {
     Rajdhani_700Bold,
     Rajdhani_500Medium,
   });
-  if(!isLoaded) {
-    return <AppLoading/>
+  if (!isLoaded) {
+    return <AppLoading />;
   }
   return (
     <Background>
-      <StatusBar
-        translucent
-        barStyle={"light-content"}
-        backgroundColor={"transparent"}
-      />
-      <SignIn />
+      <NavigationContainer theme={MyTheme}>
+        <StatusBar
+          translucent
+          barStyle={"light-content"}
+          backgroundColor={"transparent"}
+        />
+        <AuthRoutes />
+      </NavigationContainer>
     </Background>
   );
 }

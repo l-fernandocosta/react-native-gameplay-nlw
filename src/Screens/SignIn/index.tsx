@@ -1,11 +1,18 @@
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
 import { View, Text, Image, StatusBar } from "react-native";
 import ilustration from "../../assets/illustration.png";
 import { ButtonIcon } from "../../Components/ButtonIcon";
+import { RootStackParams } from "../../routes/auth.routes";
 import { styles } from "./styles";
 
+
 export function SignIn() {
-  
+  const {navigate} = useNavigation<StackNavigationProp<RootStackParams>>();
+  const handleSignIn = () => {
+      navigate('Home'); 
+  }
   return (
     
     <View style={styles.container}>
@@ -25,7 +32,7 @@ export function SignIn() {
             Crie grupos para jogar seus games{`\n`}
             favoritos com seus amigos
           </Text>
-        <ButtonIcon name={"Login with Discord"} activeOpacity={0.7} />
+        <ButtonIcon name={"Login with Discord"} activeOpacity={0.7} onPress={handleSignIn}/>
       </View>
     </View>
   );
