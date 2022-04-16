@@ -6,6 +6,6 @@ import fun from "../assets/fun.svg";
 export const categories = [
   { id: 1, title: "ranked", icon: rankedIcon },
   { id: 2, title: "duel", icon: duel },
-  { id: 3, title: "ranked", icon: rankedIcon },
-  { id: 4, title: "ranked", icon: rankedIcon },
+  { id: 3, title: "training", icon: training },
+  { id: 4, title: "fun", icon: fun },
 ];
