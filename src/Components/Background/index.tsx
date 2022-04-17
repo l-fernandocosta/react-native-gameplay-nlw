@@ -1,7 +1,7 @@
 import { DefaultTheme } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import React, { ReactNode } from "react";
-import { ViewProps } from "react-native";
+import { TouchableWithoutFeedbackComponent, ViewProps } from "react-native";
 import { theme } from "../../global/styles/themes";
 import { styles } from "./styles";
 
@@ -13,7 +13,7 @@ export const MyTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    background: 'transparent'
+    background: theme.colors.secondary80, 
   },
 };
 

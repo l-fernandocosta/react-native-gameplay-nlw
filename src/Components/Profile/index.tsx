@@ -10,10 +10,10 @@ export function Profile() {
       <Avatar urlImage="https://github.com/l-fernandocosta.png" />
       <View>
         <View style={styles.user}>
-          <Text style={styles.greeting}>Olá, </Text>
+          <Text style={styles.greeting}>Olá,</Text>
           <Text style={styles.username}>Fernando</Text>
         </View>
-        <Text style={styles.message}>Hoje é dia de vitória</Text>
+        <Text style={styles.message}>HOJE É DIA DE VITÓRIA</Text>
       </View>
     
     </View>

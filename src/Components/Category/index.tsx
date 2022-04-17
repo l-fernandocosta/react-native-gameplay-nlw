@@ -18,18 +18,21 @@ export function Category({
   checked = false,
   ...rest
 }: CategoryProps) {
-  const { secondary50, secondary70 } = theme.colors;
+  const { secondary40, secondary100, secondary50, secondary70 } = theme.colors;
   return (
     <RectButton {...rest}>
       <LinearGradient
         colors={[secondary50, secondary70]}
         style={styles.container}
       >
-        <View style={[styles.content, { opacity: checked ? 1 : 0.4 }]}>
+        <LinearGradient
+          colors={[checked ? secondary70 : secondary40, secondary100]}
+          style={[styles.content, { opacity: checked ? 1 : 0.4 }]}
+        >
           <View style={checked ? styles.checked : styles.check} />
           <Icon width={48} height={48} />
           <Text style={styles.title}>{title}</Text>
-        </View>
+        </LinearGradient>
       </LinearGradient>
     </RectButton>
   );

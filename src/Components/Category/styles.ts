@@ -44,6 +44,7 @@ export const styles = StyleSheet.create({
     borderRadius: 8 ,
   },
   title: {
+    fontWeight: "bold",
     color: theme.colors.heading,
     fontFamily: theme.fonts.title500,
     fontSize: 15,
