@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FlatList, View, Text } from "react-native";
+import { AppointmentDetails } from "../../Components/AppointmentDetails";
 import { Appointments } from "../../Components/Appointments";
 import { Background } from "../../Components/Background";
 
@@ -80,6 +81,7 @@ export function Home() {
   }
   return (
     <Background>
+      <AppointmentDetails />
       <View style={styles.container}>
         <View style={styles.header}>
           <Profile />
