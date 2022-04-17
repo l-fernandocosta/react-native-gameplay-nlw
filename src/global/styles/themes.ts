@@ -11,7 +11,7 @@ export const theme = {
     secondary30: "#495BCC",
 
     background: "#0d133d",
-    overlay: "#abb1cc",
+    overlay: "#ABB1CC",
     heading: "#DDE3F0",
     line: "#991F36",
     on: "#32Bd50", 

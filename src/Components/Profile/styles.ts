@@ -24,7 +24,8 @@ export const styles = StyleSheet.create({
   },
   message:{
     color: colors.overlay, 
-    fontFamily: fonts.text400
+    fontFamily: fonts.text400, 
+    opacity: 0.7, 
 
   }, 
 });
