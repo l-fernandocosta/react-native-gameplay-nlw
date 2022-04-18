@@ -1,12 +1,14 @@
 import React, { ReactFragment } from "react";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createStackNavigator, StackNavigationProp } from "@react-navigation/stack";
 import { SignIn } from "../Screens/SignIn";
 import { Home } from "../Screens/Home";
+import { AppointmentDetails } from "../Components/AppointmentDetails";
 
 
-export type RootStackParams ={
+export type RootStackParams = {
   SignIn: undefined,
   Home: undefined, 
+  AppointmentDetails: undefined, 
 }
 
 
@@ -21,6 +23,7 @@ export const AuthRoutes = () => {
     >
       <Screen name="SignIn" component={SignIn} />
       <Screen name="Home" component={Home} />
+      <Screen name="AppointmentDetails" component={AppointmentDetails} />
     </Navigator>
   );
 };

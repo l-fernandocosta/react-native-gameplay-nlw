@@ -1,3 +1,5 @@
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useState } from "react";
 import { FlatList, View, Text } from "react-native";
 import { AppointmentDetails } from "../../Components/AppointmentDetails";
@@ -9,6 +11,7 @@ import { CategorySelector } from "../../Components/CategorySelect";
 import { ListDivider } from "../../Components/ListDivider";
 import { ListHeader } from "../../Components/LIstHeader/";
 import { Profile } from "../../Components/Profile";
+import { RootStackParams } from "../../routes/auth.routes";
 import { styles } from "./styles";
 
 const appointments = [
@@ -79,9 +82,10 @@ export function Home() {
   function handleCategorySelect(categoryId: string) {
     categoryId === category ? setCategory("") : setCategory(categoryId);
   }
+  const {navigate} = useNavigation<StackNavigationProp<RootStackParams>>();
   return (
     <Background>
-      <AppointmentDetails />
+      
       <View style={styles.container}>
         <View style={styles.header}>
           <Profile />
@@ -99,7 +103,9 @@ export function Home() {
             ItemSeparatorComponent={() => <ListDivider />}
             data={appointments}
             keyExtractor={(item) => item.id}
-            renderItem={({ item }) => <Appointments data={item} />}
+            renderItem={({ item }) => <Appointments data={item}  onPress={() => {
+              navigate("AppointmentDetails")
+            }}/>}
           ></FlatList>
         </View>
       </View>

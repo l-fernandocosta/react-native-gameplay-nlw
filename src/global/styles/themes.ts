@@ -16,6 +16,8 @@ export const theme = {
     heading: "#DDE3F0",
     line: "#991F36",
     on: "#32Bd50", 
+    off: "#5d5d5d",
+    busy: "#e69b00",
   },
 
   fonts:{
