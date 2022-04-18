@@ -6,13 +6,13 @@ import BannerImg from "../../assets/banner.png";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "./styles";
 
-import { ListHeader } from "../LIstHeader";
-import { ButtonIcon } from "../ButtonIcon";
-import { Header } from "../Header";
+import { ListHeader } from "../../Components/LIstHeader";
+import { ButtonIcon } from "../../Components/ButtonIcon";
+import { Header } from "../../Components/Header";
 import { theme } from "../../global/styles/themes";
-import { Members } from "../Members";
-import { ListDivider } from "../ListDivider";
-import { Background } from "../Background";
+import { Members } from "../../Components/Members";
+import { ListDivider } from "../../Components/ListDivider";
+import { Background } from "../../Components/Background";
 
 export function AppointmentDetails() {
   const members = [
@@ -62,6 +62,7 @@ export function AppointmentDetails() {
       <View style={styles.footer}>
         <ButtonIcon name="Entrar no servidor do Discord" />
       </View>
+      
     </Background>
   );
 }

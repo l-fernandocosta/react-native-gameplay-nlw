@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React from "react";
-import { View, Text, Image, StatusBar } from "react-native";
+import { View, Text, Image } from "react-native";
 import ilustration from "../../assets/illustration.png";
 import { Background } from "../../Components/Background";
 import { ButtonIcon } from "../../Components/ButtonIcon";

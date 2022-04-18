@@ -1,8 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { useState } from "react";
-import { FlatList, View, Text } from "react-native";
-import { AppointmentDetails } from "../../Components/AppointmentDetails";
+import { FlatList, View } from "react-native";
 import { Appointments } from "../../Components/Appointments";
 import { Background } from "../../Components/Background";
 
@@ -83,13 +82,16 @@ export function Home() {
     categoryId === category ? setCategory("") : setCategory(categoryId);
   }
   const {navigate} = useNavigation<StackNavigationProp<RootStackParams>>();
+  const handleNewRoom = () => {
+    navigate("AppointmentCreate")
+  }
   return (
     <Background>
       
       <View style={styles.container}>
         <View style={styles.header}>
           <Profile />
-          <ButtonAdd />
+          <ButtonAdd onPress={handleNewRoom}/>
         </View>
         <View>
           <CategorySelector
