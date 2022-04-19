@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
     height: 104, 
     paddingTop: getStatusBarHeight(),
     paddingHorizontal: 20, 
+    
   },
   title: {
     flex: 1, 

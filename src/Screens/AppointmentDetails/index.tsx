@@ -13,6 +13,7 @@ import { theme } from "../../global/styles/themes";
 import { Members } from "../../Components/Members";
 import { ListDivider } from "../../Components/ListDivider";
 import { Background } from "../../Components/Background";
+import { SmallInput } from "../../Components/SmallInput";
 
 export function AppointmentDetails() {
   const members = [
@@ -60,7 +61,7 @@ export function AppointmentDetails() {
         )}
       />
       <View style={styles.footer}>
-        <ButtonIcon name="Entrar no servidor do Discord" />
+        <ButtonIcon name="Entrar no servidor do Discord" hasIcon= {true} />
       </View>
       
     </Background>

@@ -32,6 +32,7 @@ export function SignIn() {
             favoritos com seus amigos
           </Text>
           <ButtonIcon
+            hasIcon = {true}
             name={"Login with Discord"}
             activeOpacity={0.7}
             onPress={handleSignIn}

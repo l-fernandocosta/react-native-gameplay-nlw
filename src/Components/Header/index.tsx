@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { Text} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { theme } from "../../global/styles/themes";
 import { styles } from "./styles";
@@ -19,6 +19,7 @@ export function Header({ title, action }: Props) {
   const { pop } = useNavigation<StackNavigationProp<RootStackParams>>();
   return (
     <LinearGradient
+    
       colors={[secondary40, secondary80]}
       style={styles.container}
     >

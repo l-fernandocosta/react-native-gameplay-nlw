@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     color: theme.colors.heading,
     paddingHorizontal: 24,
     paddingBottom: 12,
-    paddingTop: getStatusBarHeight(),
+    paddingTop: getStatusBarHeight() ,
   },
   serverButton: {
     width: 327,
@@ -42,8 +42,40 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: theme.fonts.title700,
   },
-  button: {
-    marginTop: 32, 
+  buttonSelectServer: {
+    marginTop: 32,
     paddingHorizontal: 24,
   },
+  flexAppointment: {
+    flexDirection: "row",
+    paddingHorizontal: 20,
+    marginTop: 28,
+  },
+  flexDate: {
+    flexDirection: "column",
+    marginRight: 15,
+  },
+  textDate: {
+    marginBottom: 12, 
+    fontSize: 18,
+    fontFamily: theme.fonts.title700,
+    color: theme.colors.heading,
+  },
+  flexTime: {},
+  textTime: {
+    marginBottom: 12, 
+    fontSize: 18,
+    fontFamily: theme.fonts.title700,
+    color: theme.colors.heading,
+  },
+  describeTextArea: {
+    paddingHorizontal: 20, 
+    marginTop: 28, 
+ 
+  }, 
+  buttonAppointment: {
+    paddingHorizontal: 20, 
+    marginTop: 56, 
+    marginBottom: 56, 
+  }
 });
