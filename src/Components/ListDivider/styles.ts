@@ -6,10 +6,11 @@ export const styles = StyleSheet.create({
     flex: 1, 
     width: "70%",
     height: 1, 
-    backgroundColor: theme.colors.overlay, 
-    marginVertical: 31, 
+    backgroundColor: theme.colors.secondary30, 
+    marginTop:15, 
+    marginBottom: 12 , 
     alignSelf: "flex-end",  
     opacity: 0.3,
-    marginTop: 2, 
+ 
   },
 });

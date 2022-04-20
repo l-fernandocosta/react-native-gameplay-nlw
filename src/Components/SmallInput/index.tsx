@@ -9,7 +9,7 @@ type Props = TextInputProps & {
 };
 
 export function SmallInput({ text, ...rest }: Props) {
-  const { secondary40, secondary85} = theme.colors;
+  const { secondary40, secondary85 } = theme.colors;
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -17,8 +17,9 @@ export function SmallInput({ text, ...rest }: Props) {
         colors={[secondary40, secondary85]}
       >
         <TextInput
+        
           style={styles.input}
-          keyboardType="number-pad"
+          keyboardType="numbers-and-punctuation"
           placeholder={text}
           {...rest}
         />

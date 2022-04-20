@@ -6,26 +6,49 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   Platform,
-  Button,
 } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
 
 import { styles } from "./styles";
 import { Ionicons } from "@expo/vector-icons";
-
-import { Background } from "../../Components/Background";
-import { Header } from "../../Components/Header";
-import { CategorySelector } from "../../Components/CategorySelect";
 import { theme } from "../../global/styles/themes";
 import { LinearGradient } from "expo-linear-gradient";
+import discordImg from "../../assets/discord.png"
+
+
+import { CategorySelector } from "../../Components/CategorySelect";
+import { Background } from "../../Components/Background";
+import { Header } from "../../Components/Header";
 import { SmallInput } from "../../Components/SmallInput";
 import { ListHeader } from "../../Components/LIstHeader";
 import { TextArea } from "../../Components/TextArea";
 import { ButtonIcon } from "../../Components/ButtonIcon";
+import { ModalView } from "../../Components/ModalView";
+import { GuildProps } from "../../Components/Guilds";
+import { GuildIcon } from "../../Components/GuildIcon";
+import { Guild } from "../Guild";
 
 export function AppointmentCreate() {
   const [category, setCategory] = useState("");
   const { secondary30, secondary70, heading } = theme.colors;
+  const [openModal, setOpenModal] = useState(false);
+  const [guildSelected, setGuildSelected] = useState<GuildProps>(
+    {} as GuildProps 
+  );
+
+  const handleOpenModal = () => {
+    if(!openModal) {
+      setOpenModal(true);
+    }else{ 
+      setOpenModal(false); 
+    }
+  };
+
+  const handleGuildSelected = (guildSelected: GuildProps) => {
+    setGuildSelected(guildSelected);
+    setOpenModal(!openModal)
+    
+  };
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -41,20 +64,25 @@ export function AppointmentCreate() {
             setCategory={setCategory}
           />
 
-          <RectButton style={styles.buttonSelectServer}>
+          <RectButton
+            style={styles.buttonSelectServer}
+            onPress={handleOpenModal}
+          >
             <View style={styles.serverButton}>
               <LinearGradient
                 colors={[secondary30, secondary70]}
                 style={styles.imageContainer}
               >
-                <Image
-                  style={styles.imageServer}
-                  source={{
-                    uri: "https://media.contentapi.ea.com/content/dam/apex-legends/common/articles/apex-legends-mobile-faq/common/apex-mobile-announce-art-3840x2160.jpg.adapt.crop16x9.1023w.jpgs",
-                  }}
-                />
+                {guildSelected.icon ? <GuildIcon/> :  (
+                      <Image
+                      style={styles.imageServer}
+                      source={discordImg}
+                      resizeMode="center"
+                    />
+                )}
+            
               </LinearGradient>
-              <Text style={styles.serverText}>Selecione um servidor</Text>
+              <Text style={styles.serverText}>{guildSelected.name ?  guildSelected.name : ("Selecione o servidor")}</Text>
               <Ionicons
                 name="chevron-forward-outline"
                 size={20}
@@ -76,11 +104,16 @@ export function AppointmentCreate() {
 
           <View style={styles.describeTextArea}>
             <ListHeader title="Descrição" subtitle="MAX. 100 CARACTERES" />
-            <TextArea  style={{marginTop: 12 }}/>
+            <TextArea style={{ marginTop: 12 }} />
           </View>
           <View style={styles.buttonAppointment}>
             <ButtonIcon name="AGENDAR" />
           </View>
+          <ModalView visible={openModal} statusBarTranslucent={true} onRequestClose={() => {
+            setOpenModal(!openModal)
+          }}>
+            <Guild handleGuildSelected={handleGuildSelected} />
+          </ModalView>
         </ScrollView>
       </Background>
     </KeyboardAvoidingView>

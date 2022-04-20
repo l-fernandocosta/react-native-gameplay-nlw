@@ -5,6 +5,6 @@ import { styles } from "./styles";
 
 export function TextArea({...rest} : TextInputProps) {
   return (
-    <TextInput style={styles.container} maxLength={100}/>
+    <TextInput style={styles.container} maxLength={100}   multiline={true} />
   )
 }
