@@ -10,6 +10,8 @@ export const styles =  StyleSheet.create({
     borderColor: theme.colors.secondary70, 
     borderRadius: 10, 
     color: theme.colors.heading, 
-    textAlign: "center", 
+    marginTop: 12, 
+    paddingLeft: 16, 
+    paddingBottom: 16, 
   }
 })

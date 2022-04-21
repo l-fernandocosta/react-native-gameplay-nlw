@@ -12,8 +12,11 @@ import { StatusBar } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { AuthRoutes } from "./src/routes/auth.routes";
+import { AuthProvider, useAuth } from "./src/hooks/Auth";
+import { SignIn } from "./src/Screens/SignIn";
 
 export default function App() {
+  const { user } = useAuth();
   const [isLoaded] = useFonts({
     Inter_400Regular,
     Inter_500Medium,
@@ -25,14 +28,16 @@ export default function App() {
   }
   return (
     <Background>
-      <NavigationContainer theme={MyTheme}>
-        <StatusBar
-          translucent
-          barStyle={"light-content"}
-          backgroundColor={"transparent"}
-        />
-        <AuthRoutes />
-      </NavigationContainer>
+      <AuthProvider>
+        <NavigationContainer theme={MyTheme}>
+          <StatusBar
+            translucent
+            barStyle={"light-content"}
+            backgroundColor={"transparent"}
+          />
+          <AuthRoutes />
+        </NavigationContainer>
+      </AuthProvider>
     </Background>
   );
 }

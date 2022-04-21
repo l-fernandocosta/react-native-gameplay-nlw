@@ -37,13 +37,11 @@ export function AppointmentCreate() {
   );
 
   const handleOpenModal = () => {
-    if(!openModal) {
-      setOpenModal(true);
-    }else{ 
-      setOpenModal(false); 
-    }
+   setOpenModal(true); 
   };
-
+  const handleCloseModal = () => {
+    setOpenModal(!openModal)
+  }
   const handleGuildSelected = (guildSelected: GuildProps) => {
     setGuildSelected(guildSelected);
     setOpenModal(!openModal)
@@ -104,12 +102,12 @@ export function AppointmentCreate() {
 
           <View style={styles.describeTextArea}>
             <ListHeader title="Descrição" subtitle="MAX. 100 CARACTERES" />
-            <TextArea style={{ marginTop: 12 }} />
+            <TextArea  />
           </View>
           <View style={styles.buttonAppointment}>
             <ButtonIcon name="AGENDAR" />
           </View>
-          <ModalView visible={openModal} statusBarTranslucent={true} onRequestClose={() => {
+          <ModalView closeModal={handleCloseModal} visible={openModal} statusBarTranslucent={true} onRequestClose={() => {
             setOpenModal(!openModal)
           }}>
             <Guild handleGuildSelected={handleGuildSelected} />
