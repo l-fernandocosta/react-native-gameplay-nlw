@@ -1,20 +1,29 @@
 import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
-import { Image } from "react-native";
+import { Image, View } from "react-native";
 
 import { theme } from "../../global/styles/themes";
 import { styles } from "./styles";
+import DiscordSvg from "../../assets/discord.svg";
+const { CDN_IMAGE } = process.env;
 
-export function GuildIcon() {
-  const uri =
-    "https://cdnb.artstation.com/p/assets/images/images/021/422/255/large/t-j-geisen-lol-icon-rendered-v001.jpg?1571640551";
+type Props = {
+  guildIcon: string | undefined;
+  guildId: string;
+};
+
+export function GuildIcon({ guildIcon, guildId }: Props) {
+  const uri = `${CDN_IMAGE}/icons/${guildId}/${guildIcon}.png`;
   const { secondary70, secondary50 } = theme.colors;
   return (
-    <LinearGradient
+    <View
       style={styles.container}
-      colors={[secondary50, secondary70]}
     >
-      <Image source={{ uri }} style={styles.image} resizeMode={"cover"} />
-    </LinearGradient>
+      {guildIcon ? (
+        <Image source={{ uri }} style={styles.image} resizeMode={"cover"} />
+      ) : (
+        <DiscordSvg width={40} height={40} style={styles.discordImg}/>
+      )}
+    </View>
   );
 }

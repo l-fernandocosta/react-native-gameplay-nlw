@@ -1,7 +1,14 @@
-import React, { createContext, ReactNode, useContext, useState } from "react";
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { api } from "../services/api";
 import * as AuthSession from "expo-auth-session";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { COLLECTION_USERS } from "../configs/database";
 const { CLIENT_ID } = process.env;
 const { REDIRECT_URI } = process.env;
 const { RESPONSE_TYPE } = process.env;
@@ -38,6 +45,19 @@ export function AuthProvider({ children }: ContextProps) {
   const [user, setUser] = useState<User>({} as User);
   const [isLoading, setIsLoading] = useState(false);
 
+  async function loadUserDataStorage() {
+    const storage = await AsyncStorage.getItem(COLLECTION_USERS);
+    if (storage) {
+      const userLogged = JSON.parse(storage) as User;
+      api.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${userLogged.token}`;
+      setUser(userLogged);
+    }
+  }
+  useEffect(() => {
+    loadUserDataStorage();
+  }, []);
   async function signIn() {
     try {
       setIsLoading(true);
@@ -46,25 +66,26 @@ export function AuthProvider({ children }: ContextProps) {
         authUrl,
       })) as AuthSessionProps;
       if (type === "success") {
-
         const userInfo = await api.get("/users/@me", {
           headers: { Authorization: `Bearer ${params.access_token}` },
-        }) ;
-        setUser({
-          avatar: `${CDN_IMAGE}/avatars/${userInfo.data.id}/${userInfo.data.avatar}.png`,
-          email: userInfo.data.email, 
-          id: userInfo.data.id, 
-          token: params.access_token, 
-          username: userInfo.data.username
         });
+        const userData = {
+          avatar: `${CDN_IMAGE}/avatars/${userInfo.data.id}/${userInfo.data.avatar}.png`,
+          email: userInfo.data.email,
+          id: userInfo.data.id,
+          token: params.access_token,
+          username: userInfo.data.username,
+        };
+        await AsyncStorage.setItem(COLLECTION_USERS, JSON.stringify(userData));
+        setUser(userData);
       }
     } catch {
-      throw new Error("Não foi possível realizar o Login ! ")
+      throw new Error("Não foi possível realizar o Login ! ");
     } finally {
       setIsLoading(false);
     }
   }
-  console.log(user)
+  console.log(user);
   return (
     <AuthContext.Provider value={{ user, signIn, isLoading }}>
       {children}

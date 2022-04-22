@@ -71,13 +71,7 @@ export function AppointmentCreate() {
                 colors={[secondary30, secondary70]}
                 style={styles.imageContainer}
               >
-                {guildSelected.icon ? <GuildIcon/> :  (
-                      <Image
-                      style={styles.imageServer}
-                      source={discordImg}
-                      resizeMode="center"
-                    />
-                )}
+                 <GuildIcon guildIcon={guildSelected.icon} guildId={guildSelected.id}/>
             
               </LinearGradient>
               <Text style={styles.serverText}>{guildSelected.name ?  guildSelected.name : ("Selecione o servidor")}</Text>

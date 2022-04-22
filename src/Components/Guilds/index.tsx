@@ -5,9 +5,12 @@ import { View,
   Image, 
   Text } from "react-native";
 
+const {CDN_IMAGE} = process.env;  
 import { MaterialIcons } from '@expo/vector-icons';
 import { theme } from "../../global/styles/themes";
 import { styles } from "./styles";
+import { GuildIcon } from "../GuildIcon";
+import DiscordSvg from "../../assets/discord.svg"
 
 
 export type GuildProps = {
@@ -27,7 +30,7 @@ export function Guilds({data, ...rest} : Props){
   return (
     <TouchableOpacity style={styles.container} {...rest}>
       <View style={styles.image}>
-        <Image source={{uri: data.icon}} />
+      {<GuildIcon guildIcon={data.icon} guildId={data.id}/>}
       </View>
       <View style={styles.textContainer}>
         <Text style={styles.guildName}>{data.name}</Text>

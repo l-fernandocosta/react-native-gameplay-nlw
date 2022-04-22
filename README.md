@@ -18,3 +18,6 @@ A project developed during the NLW from the ROCKETSEAT.
 -   [ ] Expo Authentication
 -   [ ] React Native Share
 -   [ ] Deep Link
+
+
+
