@@ -1,5 +1,6 @@
 import React from "react";
 import { Alert, Text, View } from "react-native";
+import { RectButton } from "react-native-gesture-handler";
 import { useAuth } from "../../hooks/Auth";
 import { phrasesArray } from "../../utils/phrasesArray";
 import { Avatar } from "../Avatar";
@@ -24,7 +25,9 @@ export function Profile() {
   }
   return (
     <View style={styles.container}>
-      <Avatar urlImage={user.avatar} />
+      <RectButton onPress={handleSignOut}>
+        <Avatar urlImage={user.avatar} />
+      </RectButton>
       <View>
         <View style={styles.user}>
           <Text style={styles.greeting}>Olá,</Text>
