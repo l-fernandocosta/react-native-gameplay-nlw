@@ -9,43 +9,43 @@ import { GuildIcon } from "../GuildIcon";
 import PlayerSvg from "../../assets/player.svg";
 import CalendarSvg from "../../assets/calendar.svg";
 import { theme } from "../../global/styles/themes";
+import { GuildProps } from "../Guilds";
 
-type GuildProps = {
-  id: string;
-  name: string;
-  icon: null;
-  owner: boolean;
-};
 
-type DataProps = {
+export type AppointmentProps = {
   id: string;
-  guild: GuildProps;
+  guild: GuildProps ;
   category: string;
   description: string;
   date: string;
+  
 };
 
 type Props = RectButtonProps & {
-  data: DataProps;
+  data: AppointmentProps;
 };
 
 export function Appointments({ data, ...rest }: Props) {
   const [category] = categories.filter((item) => item.id === data.category);
-  const { owner } = data.guild;
+  
+  
+  
+  console.log(`THIS IS MY DATA`, data)
+
   const { primary, on } = theme.colors;
   return (
     <RectButton {...rest}>
       <View style={styles.container}>
-        <GuildIcon />
-
+        <GuildIcon guildIcon={data.guild.icon} guildId={data.guild.id}/>
         <View style={styles.content}>
 
           <View style={styles.header}>
-            <Text style={styles.guildName}>{data.guild.name}</Text>
-            <Text style={styles.category}>{category.title}</Text>
+            <Text style={styles.guildName}>{data.guild?.name}</Text>
+    
+            <Text style={styles.category}>{category?.title}</Text>
           </View>
 
-          <Text style={styles.gameName}>Read Dead Redemption 2</Text>
+       
           <View style={styles.footer}>
             <View style={styles.dateInfo}>
               <CalendarSvg fill={primary} />
@@ -53,8 +53,8 @@ export function Appointments({ data, ...rest }: Props) {
             </View>
 
             <View style={styles.playersInfo}>
-              <PlayerSvg fill={owner ? primary : on} />
-              <Text style={styles.player}>{owner ? "Host" : "Visitor"}</Text>
+              <PlayerSvg fill={data.guild?.owner ? on : primary} />
+              <Text style={styles.player}>{data.guild?.owner ? 'Host' : "Visitor"}</Text>
             </View>
           </View>
         </View>

@@ -1,3 +1,5 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import * as AuthSession from "expo-auth-session";
 import React, {
   createContext,
   ReactNode,
@@ -5,10 +7,8 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { api } from "../services/api";
-import * as AuthSession from "expo-auth-session";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { COLLECTION_USERS } from "../configs/database";
+import { api } from "../services/api";
 const { CLIENT_ID } = process.env;
 const { REDIRECT_URI } = process.env;
 const { RESPONSE_TYPE } = process.env;
@@ -32,6 +32,7 @@ type ContextData = {
   user: User;
   signIn: () => Promise<void>;
   isLoading?: boolean;
+  signOut: () => Promise<void>;
 };
 
 type AuthSessionProps = AuthSession.AuthSessionResult & {
@@ -85,9 +86,13 @@ export function AuthProvider({ children }: ContextProps) {
       setIsLoading(false);
     }
   }
-  console.log(user);
+
+  async function signOut() {
+    setUser({} as User);
+    await AsyncStorage.removeItem(COLLECTION_USERS);
+  }
   return (
-    <AuthContext.Provider value={{ user, signIn, isLoading }}>
+    <AuthContext.Provider value={{ user, signIn, isLoading, signOut }}>
       {children}
     </AuthContext.Provider>
   );

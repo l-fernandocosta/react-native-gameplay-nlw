@@ -21,8 +21,8 @@ export function Members({ id, status, name, avatar }: Props) {
         <View style={styles.statusContent}>
          
           {status === "online" && <View style={styles.on} />}
-          {status === "Offline" && <View style={styles.off} />}
-          {status === "busy" && <View style={styles.busy} />}
+          {status === "dnd" && <View style={styles.off} />}
+          {status === "idle" && <View style={styles.busy} />}
           <Text style={styles.status}>{status}</Text>
         </View>
       </View>

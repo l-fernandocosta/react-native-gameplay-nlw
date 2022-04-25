@@ -5,17 +5,15 @@ import { View,
   Image, 
   Text } from "react-native";
 
-const {CDN_IMAGE} = process.env;  
 import { MaterialIcons } from '@expo/vector-icons';
 import { theme } from "../../global/styles/themes";
 import { styles } from "./styles";
 import { GuildIcon } from "../GuildIcon";
-import DiscordSvg from "../../assets/discord.svg"
 
 
 export type GuildProps = {
-  id: string, 
-  name: string,  
+  id: string , 
+  name: string ,  
   icon: string | undefined,  
   owner: boolean, 
 }

@@ -6,11 +6,15 @@ import { Home } from "../Screens/Home";
 import { AppointmentDetails } from "../Screens/AppointmentDetails";
 import { AppointmentCreate } from "../Screens/AppointmentCreate";
 import { useAuth } from "../hooks/Auth";
+import { GuildProps } from "../Components/Guilds";
+import { AppointmentProps } from "../Components/Appointments";
 
 export type RootStackParams = {
   SignIn: undefined;
   Home: undefined;
-  AppointmentDetails: undefined;
+  AppointmentDetails: {
+    guildSelected: AppointmentProps;
+  };
   AppointmentCreate: undefined;
 };
 

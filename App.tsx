@@ -9,14 +9,12 @@ import {
 import { Background, MyTheme } from "./src/Components/Background/index";
 
 import { StatusBar } from "react-native";
-
 import { NavigationContainer } from "@react-navigation/native";
 import { AuthRoutes } from "./src/routes/auth.routes";
-import { AuthProvider, useAuth } from "./src/hooks/Auth";
-import { SignIn } from "./src/Screens/SignIn";
+import { AuthProvider } from "./src/hooks/Auth";
+import { RootSiblingParent } from "react-native-root-siblings";
 
 export default function App() {
-  const { user } = useAuth();
   const [isLoaded] = useFonts({
     Inter_400Regular,
     Inter_500Medium,
@@ -28,16 +26,19 @@ export default function App() {
   }
   return (
     <Background>
-      <AuthProvider>
-        <NavigationContainer theme={MyTheme}>
-          <StatusBar
-            translucent
-            barStyle={"light-content"}
-            backgroundColor={"transparent"}
-          />
-          <AuthRoutes />
-        </NavigationContainer>
-      </AuthProvider>
+      <RootSiblingParent>
+        <AuthProvider>
+          <NavigationContainer theme={MyTheme}>
+            <StatusBar
+              translucent
+              barStyle={"light-content"}
+              backgroundColor={"transparent"}
+            />
+
+            <AuthRoutes />
+          </NavigationContainer>
+        </AuthProvider>
+      </RootSiblingParent>
     </Background>
   );
 }

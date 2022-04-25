@@ -1,12 +1,27 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { Alert, Text, View } from "react-native";
 import { useAuth } from "../../hooks/Auth";
+import { phrasesArray } from "../../utils/phrasesArray";
 import { Avatar } from "../Avatar";
 import { styles } from "./styles";
 
-const phrasesArray = ["Hoje é dia de maldade ⚡", "Platina ou nada 🚀", "Main Lux Suporte ? 🤔"]
 export function Profile() {
-  const {user} = useAuth();
+  const { user, signOut } = useAuth();
+
+  function handleSignOut() {
+    Alert.alert("LogOut", "Deseja sair do GamePlay ? ", [
+      {
+        text: "Não",
+        style: "cancel",
+      },
+      {
+        text: "Sim",
+        onPress: () => {
+          signOut();
+        },
+      },
+    ]);
+  }
   return (
     <View style={styles.container}>
       <Avatar urlImage={user.avatar} />
@@ -15,9 +30,10 @@ export function Profile() {
           <Text style={styles.greeting}>Olá,</Text>
           <Text style={styles.username}>{user.username}</Text>
         </View>
-        <Text style={styles.message}>{phrasesArray[Math.floor(Math.random())]}</Text>
+        <Text style={styles.message}>
+          {phrasesArray[Math.floor(Math.random())]}
+        </Text>
       </View>
-    
     </View>
   );
 }
